@@ -1,0 +1,47 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Body defaults */
+body {
+  font-family: 'Inter', 'Open Sans', sans-serif;
+  background-color: #f9f9fb;
+  color: #333;
+}
+
+/* Reusable buttons */
+@layer components {
+  /* Primary Button */
+  .btn-primary {
+    @apply bg-ubuntuGreen text-white px-6 py-2 rounded-lg font-semibold transition;
+  }
+  .btn-primary:hover {
+    @apply bg-green-800;
+  }
+
+  /* Secondary Button */
+  .btn-secondary {
+    @apply bg-transparent border-2 border-white text-white px-6 py-2 rounded-lg transition;
+  }
+  .btn-secondary:hover {
+    @apply bg-white text-ubuntuBlue;
+  }
+
+  /* Section spacing */
+  .section {
+    @apply py-16 px-6;
+  }
+
+  /* Card styling */
+  .card {
+    @apply p-6 bg-white rounded-lg shadow-md transition;
+  }
+  .card:hover {
+    @apply shadow-lg;
+  }
+
+  /* Form input focus styling */
+  .form-input {
+    @apply w-full p-3 border border-gray-300 rounded focus:ring focus:ring-ubuntuGreen focus:border-ubuntuGreen;
+  }
+}
