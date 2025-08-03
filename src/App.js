@@ -1,5 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import OurWork from './pages/OurWork';
@@ -10,6 +13,14 @@ import Contact from './pages/Contact';
 import Footer from './components/Footer';
 
 function App() {
+  useEffect(() => {
+    AOS.init({
+      duration: 1000, // Animation speed in ms
+      once: true,     // Run animation only once
+      offset: 100,    // Start animation 100px before element is in view
+    });
+  }, []);
+
   return (
     <Router>
       <div className="min-h-screen flex flex-col">

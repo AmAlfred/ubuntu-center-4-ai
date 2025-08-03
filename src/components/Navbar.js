@@ -1,25 +1,46 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 50);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <nav className="bg-white shadow-md">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between h-16">
-          <div className="flex items-center">
-            {/* Logo Placeholder */}
-            <Link to="/">
-              <img src="/logo.png" alt="Ubuntu AI Center Logo" className="h-10" />
-            </Link>
-          </div>
-          <div className="flex space-x-8 items-center">
-            <Link to="/" className="text-gray-700 hover:text-green-600 font-medium">Home</Link>
-            <Link to="/our-work" className="text-gray-700 hover:text-green-600 font-medium">Our Work</Link>
-            <Link to="/who-we-are" className="text-gray-700 hover:text-green-600 font-medium">Who We Are</Link>
-            <Link to="/trainings" className="text-gray-700 hover:text-green-600 font-medium">Trainings</Link>
-            <Link to="/resources" className="text-gray-700 hover:text-green-600 font-medium">Resources</Link>
-            <Link to="/contact" className="text-gray-700 hover:text-green-600 font-medium">Contact</Link>
-          </div>
+    <nav
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
+        scrolled
+          ? "bg-white shadow-md text-ubuntuBlue"
+          : "bg-transparent text-white"
+      }`}
+    >
+      <div className="max-w-7xl mx-auto flex justify-between items-center px-6 py-4">
+        {/* Logo */}
+        <Link to="/" className="text-xl font-bold tracking-wide">
+          Ubuntu AI Center
+        </Link>
+
+        {/* Menu */}
+        <div className="hidden md:flex space-x-8 font-medium">
+          <Link to="/our-work" className="hover:text-ubuntuGreen transition">
+            Our Work
+          </Link>
+          <Link to="/who-we-are" className="hover:text-ubuntuGreen transition">
+            Who We Are
+          </Link>
+          <Link to="/trainings" className="hover:text-ubuntuGreen transition">
+            Trainings
+          </Link>
+          <Link to="/resources" className="hover:text-ubuntuGreen transition">
+            Resources
+          </Link>
+          <Link to="/contact" className="hover:text-ubuntuGreen transition">
+            Contact
+          </Link>
         </div>
       </div>
     </nav>

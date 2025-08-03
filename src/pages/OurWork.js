@@ -72,3 +72,4 @@ const OurWork = () => {
 };
 
 export default OurWork;
+git add .
